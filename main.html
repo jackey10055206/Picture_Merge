@@ -1,0 +1,38 @@
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+        <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+        <py-env>
+            - matplotlib
+            - Pillow
+        </py-env>
+    </head>
+
+    <body>
+        <h1>Matplotlib</h1>
+        <pyscript>print("Test")</pyscript>
+        <div id="lineplot">
+            <py-script output = "lineplot">
+                from PIL import Image
+
+                imageA = Image.open("baseimg.png")
+                imageB = Image.open("styleimg.jpg")
+
+                imageA = imageA.convert('RGBA')
+                imageB = imageB.convert('RGBA')
+
+                widthA, heightA = imageA.size
+                widthB, heightB = imageB.size
+             </py-script>
+        </div>
+        
+        
+    </body>
+    </html>

@@ -1,0 +1,64 @@
+<!DOCTYPEhtml>
+<html>
+<head>
+<metacharset="utf8">
+<title>圖片合成</title>
+
+<scriptsrc="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<scriptsrc="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script"></scriptsrc>
+<scriptsrc="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+
+<script>
+    function BaseImage(imgFile){
+        var f =imgFile.files[0];
+        var filereader=new FileReader();
+         filereader.onload=function(event){
+            var src_patch = event.target.result;
+            $("#baseimg").attr("src",src_patch);
+         };
+        filereader.readAsDataURL(f);
+    }
+
+    function StyleImage(imgFile){
+        var f =imgFile.files[0];
+        var filereader=new FileReader();
+         filereader.onload=function(event){
+            var src_patch = event.target.result;
+            $("#styleimg").attr("src",src_patch);
+         };
+            filereader.readAsDataURL(f);
+    }
+
+    $(function (){
+        $(".drg").draggable();
+    });
+
+</script>
+</head> 
+
+
+<body>
+
+<fieldset>
+    <input type="file" onchange="BaseImage(this)">
+    <legend>基本圖片</legend>
+</fieldset>
+<fieldset>
+    <input type="file" onchange="StyleImage(this)">
+    <legend>樣式圖片</legend>
+</fieldset>
+
+<span class="whole" style="width: 544px; display: inline-block; position: relative;">
+<img id = "baseimg" style="width: 100%; height:auto;">
+<div style="height: 100%; width: 100%; position: absolute;overflow: hidden;">
+<div class="drg" style="width: 100%; height: 100%; position: absolute;display: inline-block;">
+<img id = "styleimg" style="width: 100%; height:auto;">
+
+</div>
+</div>
+
+</span>
+
+
+</body>
+</html>>
