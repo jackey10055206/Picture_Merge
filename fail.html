@@ -4,9 +4,9 @@
 <metacharset="utf8">
 <title>圖片合成</title>
 
-<scriptsrc="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<scriptsrc="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script"></scriptsrc>
-<scriptsrc="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
 
 <script>
     function BaseImage(imgFile){
@@ -33,6 +33,15 @@
         $(".drg").draggable();
     });
 
+    // function down(){
+    //     html2canvas($(".whole"),{
+    //         onrendered:function(canvas){
+    //             var link = document.createElement("a");
+    //             link.href = canvas.toDataURL();
+    //             link.click();
+    //         },
+    //     })
+    // }
 </script>
 </head> 
 
@@ -48,11 +57,11 @@
     <legend>樣式圖片</legend>
 </fieldset>
 
-<span class="whole" style="width: 544px; display: inline-block; position: relative;">
-<img id = "baseimg" style="width: 100%; height:auto;">
-<div style="height: 100%; width: 100%; position: absolute;overflow: hidden;">
-<div class="drg" style="width: 100%; height: 100%; position: absolute;display: inline-block;">
-<img id = "styleimg" style="width: 100%; height:auto;">
+<span class="whole" style="width: 544px;display: inline-block;position: relative;">
+<img id="baseimg"  style="width:100%;height:auto;"  >
+<div style="height: 100%;width: 100%;top:0;position: absolute;overflow: hidden;">
+<div class="drg" style="position: absolute;width:100px;top: 0px;left: 0px;display: inline-block;">
+<img id="styleimg"  style="width:200px; height:auto;cursor: pointer;" >
 
 </div>
 </div>

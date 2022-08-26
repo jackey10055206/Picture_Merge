@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<link href="https://unpkg.com/nanogallery2/dist/css/nanogallery2.min.css" rel="stylesheet" type="text/css"></link>
+<script type="text/javascript" src="https://unpkg.com/nanogallery2/dist/jquery.nanogallery2.min.js"></script>
+
+
+
+
+<body>
+
+
+<div id = "nanogallery2"></div>
+
+<script>
+    $("#nanogallery2").nanogallery2({
+        gallertyMosaic :[
+            {w:3,h:4,c:1,r:1},
+            {w:3,h:2,c:4,r:1},
+            {w:3,h:2,c:4,r:3},
+        ],
+        thumbnailAlignment: 'left',
+        thumbnailHeight: 300,//圖片高度
+        thumbnailWidth:  300,//圖片寬度
+        thumbnailDisplayTransition: 'flipDown',//圖片展開方式
+        galleryMaxRows: 1,
+        galleryDisplayMode:"fullContent",
+        thumbnailL1GutterWidth: 0,//以下四個，圖片間格距離
+        thumbnailL1GutterHeight: 0,
+        thumbnailBorderHorizontal: 0,
+        thumbnailBorderVertical: 0,
+
+        thumbnailLabel: {//圖片的標誌
+        display: true,
+        position: 'onBottomOverImage',
+        hideIcons: true,
+        titleFontSize: '1em',
+        align: 'left',
+        titleMultiLine: true,
+        displayDescription: false
+        },
+
+        items:[{
+            src:"https://4.bp.blogspot.com/-1g7zj-oB-s4/XFO0dywZTVI/AAAAAAAAYRk/_t7XrH7YtQoCp67gHxZ4pskAHX9TUnqHQCLcBGAs/s1600/cc0-image-stock-license.jpg",
+            title: "pic1"
+        },{
+            src:"https://2.bp.blogspot.com/-MQgmDdWOn5s/WoEcbqEIWPI/AAAAAAAAWXo/h8U_GHIW75obyskVvwgGQlD3ji0gjU7NACLcBGAs/s1600/will-google-close-blogger-business-analysis.jpg",
+            title: "pic2"
+        },{
+            src: "https://4.bp.blogspot.com/-Vp6_fuEU8zM/V7vRUTEb-HI/AAAAAAAAOJE/9YVKsFPH6Tk1ADOnOK_yU44EXCthIY75gCLcB/s1600/blogger-free-consultant.jpg",
+            title: "pic3"
+        }]
+        
+    });
+</script>
+
+
+
+
+
+
+</body>
+
+
+
+
+</head>
+
+
+
+
+
+</html>

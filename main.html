@@ -1,38 +1,62 @@
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Document</title>
         <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
         <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
-
+        
         <py-env>
-            - matplotlib
-            - Pillow
+            - PIL:
+                - pillow:
+                    - version: "6.2.0"
+                    - url: "https://pypi.org/project/Pillow/"
+                    - license: "MIT"
         </py-env>
+        
     </head>
 
     <body>
-        <h1>Matplotlib</h1>
-        <pyscript>print("Test")</pyscript>
-        <div id="lineplot">
-            <py-script output = "lineplot">
-                from PIL import Image
+        <p>Merge Picture</P>
+        <br />
+        <label for="myfile">Select a file:</label>
+        <input type="file" id="myfile" name="myfile">
+        <br />
+        <br />
+        <p>Image:</p>
+        <img id="image">
 
-                imageA = Image.open("baseimg.png")
-                imageB = Image.open("styleimg.jpg")
+        <py-script>
+        import asyncio
+        import js
+        from js import document
+        from pyodide import create_proxy
+        from PIL import Image
 
-                imageA = imageA.convert('RGBA')
-                imageB = imageB.convert('RGBA')
+        def read_complete(event):
+            image = document.getElementById("image")
+            image.src = event.target.result
+            
 
-                widthA, heightA = imageA.size
-                widthB, heightB = imageB.size
-             </py-script>
-        </div>
-        
-        
+        async def process_file(x):
+            fileList = document.getElementById('myfile').files
+
+            for f in fileList:
+                reader = js.FileReader.new()
+                onload_event = create_proxy(read_complete)
+                reader.onload = onload_event
+                reader.readAsDataURL(f)
+            return
+
+        def setup():
+            file_event = create_proxy(process_file)
+            e = document.getElementById("myfile")
+            e.addEventListener("change", file_event,False)
+
+        setup()
+
+        </py-script>  
     </body>
-    </html>
+</html>
